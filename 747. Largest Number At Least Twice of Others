@@ -1,0 +1,34 @@
+class Solution {
+    public static int dominantIndex(int[] nums) {
+        int maxvalue=0;
+        int key=0;
+        int n=nums.length;
+        for(int i=0;i<n;i++){
+            if(maxvalue<nums[i]){
+                maxvalue=nums[i];
+                key=i;
+            }
+           
+        }
+        for(int i=0;i<n;i++){
+        if(maxvalue<nums[i]*2&&i!=key){
+            return -1;
+        }
+       
+        }
+       return key;
+    
+}
+}
+class Main{
+    public static void main(String[]args){
+        Scanner sc=new Scanner(System.in);
+        int n=sc.nextInt();
+        int nums[]=new int[n];
+        for(int i=0;i<n;i++){
+            nums[i]=sc.nextInt();
+        }
+        int result=Solution.dominantIndex(nums);
+        System.out.println(result);
+    }
+}
