@@ -1,0 +1,41 @@
+class Solution {
+    public static long maximumTripletValue(int[] nums) {
+        int n=nums.length;
+       long maxvalue=0;
+       long value=0;
+        for(int i=0;i<n-2;i++){
+            for(int j=i+1;j<n-1;j++){
+                for(int k=j+1;k<n;k++){
+                    if(i<k&&j<k){
+                        value=(long) (nums[i]-nums[j])*nums[k];
+                        maxvalue=Math.max(maxvalue,value);
+
+                    }
+
+                }
+            }
+        }
+        if(maxvalue>=0){
+            return maxvalue;
+        }
+        else{
+            return 0;
+        }
+           
+
+        }
+
+        
+    }
+    class Main{
+        public static void main(String[]args){
+            Scanner sc=new Scanner(System.in);
+            int n=sc.nextInt();
+            int nums[]=new int[n];
+            for(int i=0;i<n;i++){
+                nums[i]=sc.nextInt();
+            }
+            long result=Solution.maximumTripletValue(nums);
+            System.out.println(result);
+        }
+    }
