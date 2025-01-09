@@ -1,0 +1,38 @@
+class Solution {
+    public static List<Integer> addToArrayForm(int[] num, int k) {
+        int l=num.length;
+        int i=l-1;
+        int carry=0;
+        int sum=0;
+        List<Integer>list=new ArrayList<>();
+        while(i>=0||k>0||carry>0){
+            sum=(i>=0?num[i]:0)+(k%10)+carry;
+            list.add(sum%10);
+            carry=sum/10;
+            k/=10;
+            i--;
+
+        }
+        List <Integer> finalresult=new ArrayList<>();
+        for(int j=list.size()-1;j>=0;j--)
+        {
+            finalresult.add(list.get(j));
+        }
+        return finalresult;
+
+        
+    }
+}
+class Main{
+    public static void main(String[]args){
+        Scanner sc=new Scanner(System.in);
+        int n=sc.nextInt();
+        int k=sc.nextInt();
+        int num[]=new int[n];
+        for(int i=0;i<n;i++){
+            num[i]=sc.nextInt();
+        }
+        List <Integer> list=Solution.addToArrayForm(num,k);
+        System.out.println(list);
+    }
+}
