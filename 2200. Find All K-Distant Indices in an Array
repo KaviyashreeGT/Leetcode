@@ -1,0 +1,34 @@
+class Solution {
+    public static List<Integer> findKDistantIndices(int[] nums, int key, int k) {
+        int n=nums.length;
+        List<Integer>a=new ArrayList<>();
+        boolean [] isadd=new boolean[n];
+        for(int j=0;j<n;j++){
+            if(nums[j]==key){
+            for(int i=Math.max(0,j-k);i<=Math.min(n-1,j+k);i++){
+                    if(!isadd[i]){
+                        a.add(i);
+                        isadd[i]=true;
+                    
+                }
+            }
+            }
+        }
+        return a;
+    }
+}
+class Main{
+    public static void main(String[]args){
+        Scanner sc=new Scanner(System.in);
+        int n=sc.nextInt();
+        int k=sc.nextInt();
+        int key=sc.nextInt();
+        int nums[]=new int[n];
+        for(int i=0;i<n;i++){
+            nums[i]=sc.nextInt();
+        }
+        List <Integer>list =Solution. findKDistantIndices(nums,key,k);
+        System.out.println(list);
+
+    }
+}
